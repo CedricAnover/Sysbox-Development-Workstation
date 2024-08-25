@@ -1,7 +1,7 @@
-# Sysbox Jammy Workstation
+# Sysbox Development Workstation
 
 ## Overview
-The Sysbox Jammy Workstation is a fully isolated and ephemeral development environment built on Ubuntu Jammy (22.04) using the Sysbox container runtime. It provides a secure and consistent workspace where developers can install and use various tools without affecting their host environment. This project supports tools like 0install, Nix, and Code Server, allowing developers to work directly in their browser with portable development tools.
+The Sysbox Development Workstation is a fully isolated and ephemeral development environment using the Sysbox container runtime. It provides a secure and consistent workspace where developers can install and use various tools without affecting their host environment. This project supports tools like 0install, Nix, and Code Server, allowing developers to work directly in their browser with portable development tools.
 
 ## Features
 - **Isolated Development Environment:** Leverages the Sysbox runtime to create a secure, isolated container that simulates a full VM.
