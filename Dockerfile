@@ -6,7 +6,8 @@ RUN --mount=type=secret,id=newpass \
     useradd -m -d /home/${NEW_USER} -s /bin/bash -G sudo ${NEW_USER} \
     && echo "${NEW_USER}:$(cat /run/secrets/newpass)" | chpasswd \
     && usermod -aG docker ${NEW_USER} \
-    && userdel -r admin
+    && userdel -r admin \
+    && echo "$NEW_USER ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/$NEW_USER
 
 RUN mkdir -p /home/${NEW_USER}/.ssh \
     && chown ${NEW_USER}:${NEW_USER} /home/${NEW_USER}/.ssh
