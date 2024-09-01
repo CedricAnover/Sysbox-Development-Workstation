@@ -13,6 +13,7 @@ NEW_PASSWORD=$2
 : ${DOCKER_HUB_PUSH:='no'}
 : ${BASE_IMG_NAME:='sysbox-jammy'}
 : ${BASE_IMG_TAG:='latest'}
+: ${USE_SSH_PASSWD_AUTH:='yes'}
 
 FULL_IMG_NAME="$DOCKER_HUB_USERNAME/$BASE_IMG_NAME:$BASE_IMG_TAG"
 
@@ -24,6 +25,7 @@ export DOCKER_BUILDKIT=1
 docker build -t $FULL_IMG_NAME \
     --secret id=newpass,env=PASSWORD \
     --build-arg NEW_USER=$NEW_USERNAME \
+    --build-arg "USE_SSH_PASSWD_AUTH=$USE_SSH_PASSWD_AUTH" \
     --no-cache --progress='plain' .
 docker image prune -f
 echo "Build Complete: $FULL_IMG_NAME"
