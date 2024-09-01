@@ -46,6 +46,9 @@ ssh developer@127.0.0.1 -p 2222
 $ ./build.sh <username> <password>
 # ---- Or
 $ DOCKER_HUB_USERNAME='<dockerhub_username>' DOCKER_HUB_PUSH='<yes|no>' ./build.sh <username> <password>
+
+# Optional: Disable SSH Password Authentication
+$ USE_SSH_PASSWD_AUTH='no' ./build.sh <username> <password>
 ```
 
 If you prefer to build with custom parameters, use the following commands:
@@ -71,6 +74,12 @@ docker run --runtime=sysbox-runc -it -d --rm \
 
 # ---- SSH
 ssh $NEW_USERNAME@127.0.0.1 -p 2222
+
+# If you pass 'USE_SSH_PASSWD_AUTH=no' in the Docker Build Argument, you can obtain the SSH Private Key
+# and write to a file using:
+$ echo "$(docker exec <container_name> cat /home/<username>/.ssh/id_rsa)" > path/to/id_rsa
+$ chmod 600 path/to/id_rsa
+$ ssh -i path/to/id_rsa <username>@127.0.0.1 -p 2222
 ```
 
 ## Installing Tools
