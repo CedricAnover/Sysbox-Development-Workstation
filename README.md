@@ -77,9 +77,9 @@ ssh $NEW_USERNAME@127.0.0.1 -p 2222
 
 # If you pass 'USE_SSH_PASSWD_AUTH=no' in the Docker Build Argument, you can obtain the SSH Private Key
 # and write to a file using:
-$ echo "$(docker exec <container_name> cat /home/<username>/.ssh/id_rsa)" > path/to/id_rsa
-$ chmod 600 path/to/id_rsa
-$ ssh -i path/to/id_rsa <username>@127.0.0.1 -p 2222
+$ echo "$(docker exec <container_name> cat /home/<username>/.ssh/id_rsa)" > path/to/host/id_rsa
+$ chmod 600 path/to/host/id_rsa
+$ ssh -i path/to/host/id_rsa <username>@127.0.0.1 -p 2222
 ```
 
 ## Installing Tools
